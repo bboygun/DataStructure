@@ -57,7 +57,7 @@ namespace PTA22
             }
 
             bool[] visited = new bool[n];
-            int[] latest = new int[n];
+            int[] earliest= new int[n];
 
             while(true)
             {
@@ -70,9 +70,9 @@ namespace PTA22
                     if (Graph[source, i] < int.MaxValue) 
                     {
                         before[i]--;
-                        if (latest[source] + Graph[source, i] > latest[i])
+                        if (earliest[source] + Graph[source, i] > earliest[i])
                         {
-                            latest[i] = latest[source] + Graph[source, i];
+                            earliest[i] = earliest[source] + Graph[source, i];
                         }
                     }
                 }
@@ -89,8 +89,8 @@ namespace PTA22
             for(int i =0;i<=n-1;i++)
             {
                 if (after[i] == 0)
-                    if (latest[i] > time)
-                        time = latest[i];
+                    if (earliest[i] > time)
+                        time = earliest[i];
             }
             Console.WriteLine(time);
             Console.ReadKey();
